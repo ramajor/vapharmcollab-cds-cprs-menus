@@ -10,6 +10,8 @@
       <b-row>
         <!-- 4 columns below need to be components to prevent repitition -->
         <!-- First Column -->
+        <!-- <menuColumn :propItems="C1items"/> -->
+
         <b-col>
           <div class="my-3" v-for="item in C1items" :key="item.index">
             <div v-if="item.Header === 1">
@@ -25,6 +27,7 @@
           </div>
         </b-col>
         <!-- Second Column -->
+        <!-- <menuColumn :propItems="C2items" v-if="col2"/> -->
         <b-col v-if="col2">
           <div class="my-3" v-for="item in C2items" :key="item.index">
             <div v-if="item.Header === 1">
@@ -78,8 +81,9 @@
 //imports
 import MenuData from '~/static/OrderMenus.json';
 import subLink from '~/components/subLink.vue';
+import menuColumn from '~/components/menuColumn.vue';
 export default {
-  components: {subLink},
+  components: { subLink, menuColumn },
   async asyncData({ params, redirect }) {
     const filteredMenuItem = MenuData.find(
       (el) => el.Name.replace(/\W/g, '_') === params.menuitem
